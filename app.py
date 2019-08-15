@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from fastai.basic_train import load_learner
 from fastai.vision import open_image
+from flask_cors import CORS, cross_origin
 app = Flask(__name__)
 
 # load the learner
@@ -20,6 +21,7 @@ def predict_single(img_file):
 
 # route for prediction
 @app.route('/predict', methods=['POST'])
+@cross_origin(origin='*')
 def predict():
     return jsonify(predict_single(request.files['image']))
 
