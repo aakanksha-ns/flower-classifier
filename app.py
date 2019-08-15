@@ -4,7 +4,7 @@ from fastai.vision import open_image
 app = Flask(__name__)
 
 # load the learner
-learn = load_learner(path='.', file='trained_model.pkl')
+learn = load_learner(path='./models', file='trained_model.pkl')
 classes = learn.data.classes
 
 
@@ -27,3 +27,7 @@ def predict():
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
+
+if __name__ == '__main__':
+    app.run()
+
