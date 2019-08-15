@@ -1,3 +1,4 @@
+nomkl
 asn1crypto==0.24.0
 astroid==2.2.5
 autopep8==1.4.4
