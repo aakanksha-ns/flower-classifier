@@ -3,6 +3,7 @@ from fastai.basic_train import load_learner
 from fastai.vision import open_image
 from flask_cors import CORS,cross_origin
 app = Flask(__name__)
+CORS(app, support_credentials=True)
 
 # load the learner
 learn = load_learner(path='./models', file='trained_model.pkl')
