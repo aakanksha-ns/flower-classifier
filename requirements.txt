@@ -2,4 +2,4 @@ Flask
 gunicorn
 numpy
 pytorch
-fastai==1.0.24
+fastai
