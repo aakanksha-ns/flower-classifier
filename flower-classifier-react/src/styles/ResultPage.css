@@ -1,0 +1,56 @@
+header {
+    text-align: center;
+    font-size: 45px;
+    line-height: 25px;
+    letter-spacing: 1px;
+    padding-top: 20px;
+}
+
+
+@include media-breakpoint-up(sm) {
+    .header { 
+        padding-top: 30px;
+    }
+}
+
+@include media-breakpoint-up(sm) {
+    .message { 
+        padding-top: 30px;
+    }
+}
+
+.message {
+    padding-top: 15px;
+    text-align: center;
+    font-size: 20px;
+}
+
+h1 { color: black; 
+    font-family: 'Rouge Script', cursive; 
+    font-size: 130px; 
+    font-weight: normal; 
+    line-height: 48px; 
+    margin: 0 0 50px; 
+    text-align: center; 
+    text-shadow: 1px 1px 2px #082b34; 
+}
+
+.pred-cat {
+    font-size: 30px;
+    font-weight: bold;
+    color: darkblue;
+}
+
+.preds {
+    background-color: white;
+    margin-top: 20px;
+}
+
+.probs-outer {
+    background-color: white;
+    margin-top: 20px;
+}
+
+.probs-title {
+    font-size: 25px;
+}
