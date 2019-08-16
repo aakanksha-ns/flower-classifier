@@ -1,13 +1,30 @@
 import '../styles/LandingPage.css'
+import ResultPage from '../components/ResultPage';
 var React = require("react");
+
 
 class LandingPage extends React.Component {
     render() {
-        let image;
+        let image, results;
         if (this.props.img) {
             image = <div className="row"><div className="col-12 center-div"><img src={this.props.img} className="center-div image-preview" /></div></div>
         } else {
             image = <div className="row"></div>
+        }
+        if (this.props.currentStep == 3) {
+            results =
+                <div className="row">
+                    <div className="col-12 center-div">
+                        <button class="btn btn-primary" type="button" disabled>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            Detecting flower
+                </button>
+                    </div>
+                </div>
+        } else if (this.props.currentStep == 1) {
+            results = <ResultPage result={this.props.response} />
+        } else {
+            results = <div></div>
         }
         return (
             <div className="container">
@@ -30,13 +47,7 @@ class LandingPage extends React.Component {
                     </div>
                 </div>
                 {image}
-                <footer>
-                    <div className="row footer">
-                        <div className="col-12 center-div">
-                            <button type="button" className="btn btn-primary upload-button" onClick={this.props.fetchResult}>Upload</button>
-                        </div>
-                    </div>
-                </footer>
+                {results}
             </div>
         );
     }

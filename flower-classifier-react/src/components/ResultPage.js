@@ -5,21 +5,6 @@ class ResultPage extends React.Component {
     render() {
         return (
             <div className="container">
-                <div className="row">
-                    <h1 className="col-12 header">
-                        Flower Classifier
-                    </h1>
-                </div>
-                <div className="row">
-                    <div className="col-12 message">
-                        Here are your results:
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-12 center-div">
-                        <img src={this.props.img} className="center-div image-preview" />
-                    </div>
-                </div>
                 <div className="row center-div preds">
                     <div className="col-12 center-div pred-cat"> Predicted Category: {this.props.result['category']}</div>
                 </div>
