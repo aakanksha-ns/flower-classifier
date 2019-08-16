@@ -13,12 +13,12 @@ class LandingPage extends React.Component {
         }
         if (this.props.currentStep == 3) {
             results =
-                <div className="row">
+                <div className="row spinner">
                     <div className="col-12 center-div">
                         <button class="btn btn-primary" type="button" disabled>
                             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                             Detecting flower
-                </button>
+                        </button>
                     </div>
                 </div>
         } else if (this.props.currentStep == 1) {

@@ -105,3 +105,6 @@ h1 { color: black;
     border: 10px solid #ddd;
 }
 
+.spinner {
+    padding-top: 50px;
+}
