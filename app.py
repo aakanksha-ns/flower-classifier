@@ -1,35 +1,53 @@
 from flask import Flask, request, jsonify
 from fastai.basic_train import load_learner
 from fastai.vision import open_image
-from flask_cors import CORS,cross_origin
+from flask_cors import CORS, cross_origin
+
 app = Flask(__name__)
 CORS(app, support_credentials=True)
 
 # load the learner
-learn = load_learner(path='./models', file='trained_model.pkl')
+learn = load_learner(path="./models", file="trained_model.pkl")
+lyrics_gen = load_learner(path="./models", file="final_lyric_gen.pkl")
 classes = learn.data.classes
 
 
 def predict_single(img_file):
-    'function to take image and return prediction'
+    "function to take image and return prediction"
     prediction = learn.predict(open_image(img_file))
     probs_list = prediction[2].numpy()
     return {
-        'category': classes[prediction[1].item()],
-        'probs': {c: round(float(probs_list[i]), 5) for (i, c) in enumerate(classes)}
+        "category": classes[prediction[1].item()],
+        "probs": {c: round(float(probs_list[i]), 5) for (i, c) in enumerate(classes)},
     }
 
 
 # route for prediction
-@app.route('/predict', methods=['POST'])
+@app.route("/predict", methods=["POST"])
 def predict():
-    return jsonify(predict_single(request.files['image']))
+    return jsonify(predict_single(request.files["image"]))
 
 
-@app.route('/')
+# route for lyrics generation
+@app.route("/generate_lyrics", methods=["POST"])
+def generate_lyrics():
+    print(request)
+    return jsonify(
+        {
+            "lyrics": lyrics_gen.predict(
+                request.form["prompt"],
+                int(request.form["word_count"]),
+                temperature=0.85,
+            )
+        }
+    )
+
+
+@app.route("/")
 def hello_world():
-    return 'Hello, World!'
+    return "Hello, World!"
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     app.run()
 
